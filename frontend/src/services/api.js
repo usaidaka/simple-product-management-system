@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const BASE = '/api/products';
+const API_URL = import.meta.env.VITE_API_URL || '';
+const BASE = `${API_URL}/api/products`;
 
 export const getProducts = (page = 1, limit = 10, filters = {}) => {
   const params = new URLSearchParams({ page, limit });
