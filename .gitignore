@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Data store (exclude from git, contains runtime data)
+backend/data/products.json
+
+# Build output
+frontend/dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.DS_Store
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.local
+
+# OpenSpec
+openspec/
