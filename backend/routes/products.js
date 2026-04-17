@@ -47,8 +47,11 @@ router.get('/', (req, res) => {
   if (minStock !== null && !isNaN(minStock)) products = products.filter((p) => p.stock >= minStock);
   if (maxStock !== null && !isNaN(maxStock)) products = products.filter((p) => p.stock <= maxStock);
 
-  // ── Sort by ID descending (newest first) ──────────────────────────────────
-  products.sort((a, b) => b.id - a.id);
+  // ── Sort by ID ──────────────────────────────────────────────────────────
+  const sortOrder = req.query.sortOrder === 'asc' ? 'asc' : 'desc';
+  products.sort((a, b) => {
+    return sortOrder === 'asc' ? a.id - b.id : b.id - a.id;
+  });
 
   // ── Pagination ────────────────────────────────────────────────────────────
   const page = parseInt(req.query.page) || 1;

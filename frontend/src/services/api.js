@@ -10,6 +10,7 @@ export const getProducts = (page = 1, limit = 10, filters = {}) => {
   if (filters.maxPrice !== '' && filters.maxPrice != null) params.set('maxPrice', filters.maxPrice);
   if (filters.minStock !== '' && filters.minStock != null) params.set('minStock', filters.minStock);
   if (filters.maxStock !== '' && filters.maxStock != null) params.set('maxStock', filters.maxStock);
+  if (filters.sortOrder) params.set('sortOrder', filters.sortOrder);
   return axios.get(`${BASE}?${params.toString()}`).then((r) => r.data);
 };
 

@@ -6,6 +6,7 @@ const EMPTY_FILTERS = {
   maxPrice: '',
   minStock: '',
   maxStock: '',
+  sortOrder: 'desc',
 };
 
 export default function SearchFilter({ onFilter }) {
@@ -36,7 +37,8 @@ export default function SearchFilter({ onFilter }) {
     filters.minPrice !== '' ||
     filters.maxPrice !== '' ||
     filters.minStock !== '' ||
-    filters.maxStock !== '';
+    filters.maxStock !== '' ||
+    filters.sortOrder !== 'desc';
 
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-gray-100 mb-6 overflow-hidden">
@@ -179,6 +181,22 @@ export default function SearchFilter({ onFilter }) {
                 onChange={handleChange('maxStock')}
                 className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 outline-none transition-all"
               />
+            </div>
+
+            {/* Sort Order */}
+            <div>
+              <label htmlFor="filter-sort-order" className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">
+                Sort Order
+              </label>
+              <select
+                id="filter-sort-order"
+                value={filters.sortOrder}
+                onChange={handleChange('sortOrder')}
+                className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 outline-none transition-all cursor-pointer"
+              >
+                <option value="desc">Newest first</option>
+                <option value="asc">Oldest first</option>
+              </select>
             </div>
           </div>
 
